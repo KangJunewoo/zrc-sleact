@@ -1,35 +1,6 @@
 ## ts + nest.js
 기존 js + express 프로젝트를 ts + nest로 마이그레이션해보자.
 
-## api 문서
-
-### workspaces
-- GET /
-- POST /
-- GET /:workspace/members
-- POST /:workspace/members
-- DELETE /:workspace/members/:id
-- 
-
-### workspaces/:workspace/channels
-- GET /
-- POST /
-- GET /:channel
-- GET /:channel/chats
-- GET /:channel/unreads
-- POST /:channel/chats
-- POST /:channel/images
-
-### workspaces/:workspace/dms
-- GET /:id/chats
-- GET /:id/unreads
-- POST /:id/chats
-- POST /:id/images
-
-### users
-- GET /
-- GET 
-
 ## 마이그레이션의 이유
 - API문서 만들기가 쉬워짐 ([공식문서](https://docs.nestjs.com/openapi/introduction))
 - type-safe 하기 때문
