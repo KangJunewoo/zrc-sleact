@@ -1,5 +1,7 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('CHANNELS')
 @Controller('api/workspaces/:url/channels')
 export class ChannelsController {
   @Get()
@@ -19,7 +21,7 @@ export class ChannelsController {
   }
 
   @Get(':name/chats')
-  getChat(@Query() query, @Param() param) {
+  getChats(@Query() query, @Param() param) {
     console.log(query.perPage, query.perPage);
     console.log(param.id, param.url);
 
