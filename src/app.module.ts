@@ -15,12 +15,35 @@ import { ChannelsModule } from './channels/channels.module';
 import { DmsModule } from './dms/dms.module';
 import { UsersModule } from './users/users.module';
 import { WorkspacesModule } from './workspaces/workspaces.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import * as ormconfig from '../ormconfig';
 
 // 네스트에선 라우터가 아닌 모듈 위주의 설계를 함.
 @Module({
-  imports: [ConfigModule.forRoot(), ChannelsModule, DmsModule, UsersModule, WorkspacesModule], // dotenv 불러오기
-  controllers: [AppController, ChannelsController, DmsController, UsersController, WorkspacesController],
-  providers: [AppService, ChannelsService, DmsService, UsersService, WorkspacesService] // Injectables
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    ChannelsModule,
+    DmsModule,
+    UsersModule,
+    WorkspacesModule,
+    TypeOrmModule.forRoot(ormconfig),
+  ], // dotenv 불러오기
+  controllers: [
+    AppController,
+    ChannelsController,
+    DmsController,
+    UsersController,
+    WorkspacesController,
+  ],
+  providers: [
+    AppService,
+    ChannelsService,
+    DmsService,
+    UsersService,
+    WorkspacesService,
+  ], // Injectables
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer): any {

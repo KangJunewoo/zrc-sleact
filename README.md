@@ -39,3 +39,15 @@
 ## 관련 글들
 - [기존 방식(require)의 작동원리](https://m.blog.naver.com/jdub7138/221022257248)
 - [node에서의 DI](https://velog.io/@moongq/Dependency-Injection)
+
+## DB 설계 관련
+- [ERD 시각적으로 보기 좋은 곳](https://erdcloud.com)
+- JPA랑 거의 똑같다.
+- 기존 설계된 db를 네스트 엔티티로 옮길땐 typeorm-model-generator를 쓰면 되고
+- 직접 엔티티를 짜서 만들땐 옵션에 synchronize: true로 옮겨주면 됨.
+- raw query 당연히 날릴 수 있다.
+
+## 기타 팁들
+- CRUD 자동화 : 공식문서 /cli/usages에 nest g resource users 하면 유저 CRUD api 싹 생성됨.
+- 공식문서 실전예제 없는것만 빼면 되게 잘되어있다.
+- 
