@@ -46,6 +46,14 @@
 - 기존 설계된 db를 네스트 엔티티로 옮길땐 typeorm-model-generator를 쓰면 되고
 - 직접 엔티티를 짜서 만들땐 옵션에 synchronize: true로 옮겨주면 됨.
 - raw query 당연히 날릴 수 있다.
+- 초기데이터 넣는걸 seeding이라고 함. 초기데이터 넣을땐 typeorm-seeding 설치.
+  - 더미로 넣을거면 faker로 만드는게 좋음 (다양한 랜덤이름 generate해줌.)
+- 칼럼을 바꾸려면 두 번을 바꿔야함. 실수하면 불일치 뜨겠지.
+  - 마이그레이션을 사용해서 코드로 변경사항을 둘에게 다 반영하는게 좋음.
+  - 잘못바꾼것같으면 롤백도 가능.
+  - `npx typeorm migration:create -n categoryToType` : 수동옵션
+  - `npx typeorm migration:generate -n categoryToType` : 자동옵션
+- typeorm 관련 모듈들은 ts인식을 잘 못함. package.json에서 ts를 인식할 수 있도록 별도의 처리를 해줘야 함.
 
 ## 기타 팁들
 - CRUD 자동화 : 공식문서 /cli/usages에 nest g resource users 하면 유저 CRUD api 싹 생성됨.
