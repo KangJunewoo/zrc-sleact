@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, Post, Req, Res } from '@nestjs/common';
 import { JoinRequestDto } from './dto/join.request.dto';
 import { UsersService } from './users.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
@@ -8,10 +8,7 @@ import { User } from '../common/decorators/user.decorator';
 @ApiTags('USER')
 @Controller('api/users')
 export class UsersController {
-
-
   constructor(private usersService: UsersService) {
-
   }
 
   @ApiResponse({
@@ -35,9 +32,9 @@ export class UsersController {
 
   @ApiOperation({ summary: '회원가입' })
   @Post()
-  postUsers(@Body() data: JoinRequestDto) {
-    this.usersService.postUsers(data.email, data.nickname, data.password);
-
+  async join(@Body() data: JoinRequestDto) {
+    await this.usersService.join(data.email, data.nickname, data.password);
+    // throw new HttpException('여기서도 되나?', 401);
   }
 
   @ApiResponse({
@@ -53,7 +50,7 @@ export class UsersController {
 
   @ApiOperation({ summary: '로그아웃' })
   @Post('logout')
-  logOut() { // 웬만하면 컨트롤러도 req, res를 몰라야 한다.
-
+  logOut() {
+    // 웬만하면 컨트롤러도 req, res를 몰라야 한다.
   }
 }

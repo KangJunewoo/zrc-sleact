@@ -17,6 +17,7 @@ import { UsersModule } from './users/users.module';
 import { WorkspacesModule } from './workspaces/workspaces.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as ormconfig from '../ormconfig';
+import { Users } from './entities/Users';
 
 // 네스트에선 라우터가 아닌 모듈 위주의 설계를 함.
 @Module({
@@ -29,6 +30,7 @@ import * as ormconfig from '../ormconfig';
     UsersModule,
     WorkspacesModule,
     TypeOrmModule.forRoot(ormconfig),
+    TypeOrmModule.forFeature([Users]),
   ], // dotenv 불러오기
   controllers: [
     AppController,
